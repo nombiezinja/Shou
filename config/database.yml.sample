@@ -1,32 +1,31 @@
 development:
  adapter: postgresql
  encoding: unicode
- database: shou_dev
+ database: shou_development
  pool: 5
- username: nombiezinja
- password: potato
+ username: your_username
+ password: your_password
 
 test:
  adapter: postgresql
  encoding: unicode
  database: shou_test
  pool: 5
- username: nombiezinja
- password: potato
+ username: your_username
+ password: your_password
 
 staging:
  adapter: postgresql
  encoding: unicode
  database: shou_staging
  pool: 5
- username: nombiezinja
- password: potato
- port: 5434
+ username: your_username
+ password: your_password
 
 production:
  adapter: postgresql
  encoding: unicode
  database: shou_production
  pool: 5
- username: nombiezinja
- password: potato
+ username: your_username
+ password: your_password
