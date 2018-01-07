@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'pg'
 gem 'figaro'
 gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
+gem 'devise'
+gem 'letter_opener'
+gem 'omniauth'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
