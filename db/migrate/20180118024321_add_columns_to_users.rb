@@ -7,6 +7,7 @@ class AddColumnsToUsers < ActiveRecord::Migration[5.1]
       t.integer :score 
       t.integer :accepted
       t.integer :completed
+      t.boolean :admin
     end 
   end
 end
