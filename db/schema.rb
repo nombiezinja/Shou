@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107012913) do
+ActiveRecord::Schema.define(version: 20180118032401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.boolean "system"
+    t.integer "added_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.string "description", null: false
+    t.boolean "recriprocating", default: false, null: false
+    t.integer "helper_id"
+    t.integer "reciprocating_task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.integer "skill_id"
+    t.integer "user_id"
+    t.integer "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,9 +60,18 @@ ActiveRecord::Schema.define(version: 20180107012913) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "score"
+    t.integer "accepted"
+    t.integer "completed"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tasks", "users", on_delete: :cascade
+  add_foreign_key "user_skills", "skills", on_delete: :cascade
+  add_foreign_key "user_skills", "users", on_delete: :cascade
 end
